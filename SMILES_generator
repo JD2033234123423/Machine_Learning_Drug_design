@@ -1,2 +1,12 @@
 #!/usr/bin/env python3
 
+import os
+import torch 
+from torchdrug import datasets, core, models, tasks, utils
+from torch import optim
+
+os.environ["TORCH_VERSION"]=torch.__version__
+
+dataset = datasets.ZINC250k("~/molecule-datasets/", kekulize=True,
+                            node_feature="symbol")
+print(dataset)
