@@ -4,13 +4,7 @@ import pandas as pd
 import numpy as np
 from rdkit import Chem
 from rdkit.Chem import AllChem
-from sklearn.linear_model import LogisticRegression
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import precision_score
-from sklearn.metrics import recall_score
-from sklearn.metrics import f1_score
 from tqdm import tqdm
-from sys import argv
 from chembl_webresource_client.new_client import new_client
 
 # setting max number of dataframe rows 
@@ -19,9 +13,8 @@ pd.set_option('display.max_rows', 100)
 
 
 # Instructions on the programme
-input("""\nWelcome, this programme is used to estimate the IC50 of a compound based on it's smiles notation.\nThis programme works by building a logistic regression model from the CHEMBL database.
-      \nTo run this programme, you need to search the CHEMBL database for the same biological target as the smiles query.\nThen, build the model by customising the IC50 value which will split the dataset for the model into active or inactive.
-      \nFor whatever value you enter, any value above, but not including that, will be considered as inactive.
+input("""\nWelcome, this programme is used to estimate the IC50 of a compound based on it's smiles notation.\nThis programme works by building a regression model based on data from the CHEMBL database.
+      \nTo run this programme, you need to search the CHEMBL database for a target, the model will be built on this target then can estimate IC50 for compounds from zincs 250K drug like compound library.
       \nTo continue, press ENTER: """)
 # Search the CHEMBL database for biological targets
 def search_query():
